@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO Brothers Construction | Built on Integrity, Precision, and Results</title>
+    <style>
+        :root {
+            --primary: #101820; /* Obsidian */
+            --secondary: #1d3557; /* Deep Steel Blue */
+            --accent: #457b9d; /* Slate Blue */
+            --light: #f1faee;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: var(--primary);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: rgba(16, 24, 32, 0.98);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        header {
+            background: linear-gradient(135deg, #101820 0%, #1d3557 100%);
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            font-weight: 900;
+            max-width: 900px;
+        }
+
+        .hero-subtext {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .cta-button.outline {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* --- Leadership Section --- */
+        .leadership {
+            padding: 8rem 10%;
+            background: var(--light);
+        }
+
+        .bio-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .bio-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .bio-text p {
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        .core-values {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .value-item {
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .value-item strong {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* --- Services Grid --- */
+        .services {
+            padding: 8rem 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+            background: #eee;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 4rem 2rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 6rem 10% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-links p, .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .bottom-bar {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 968px) {
+            .bio-container { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            header h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GO <span>Brothers</span></div>
+        <div class="nav-links">
+            <a href="#about">The Leadership</a>
+            <a href="#services">Capabilities</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-tagline">Builder. Leader. Visionary.</div>
+        <h1>Built on Integrity, Precision, and Results.</h1>
+        <p class="hero-subtext">GO Brothers Construction, led by Art and Logan Garner, provides elite commercial build-outs, residential renovations, and full ground-up developments across Texas.</p>
+        <div class="cta-group">
+            <a href="mailto:art@gobroswork.com" class="cta-button">Start Your Project</a>
+            <a href="tel:9728322637" class="cta-button outline">Call Direct</a>
+        </div>
+    </header>
+
+    <section class="leadership" id="about">
+        <div class="bio-container">
+            <div class="bio-content">
+                <h2>Art Garner</h2>
+                <p style="font-weight: 700; color: var(--accent); margin-bottom: 2rem;">CEO & FOUNDER — GO Brothers Construction LLC</p>
+                <div class="bio-text">
+                    <p>Art Garner is a Texas-based entrepreneur and construction executive whose leadership blends precision with relentless drive. From commercial retail renovations to complex logistics operations, Art's expertise spans the entire lifecycle of construction: estimating, budgeting, and field execution.</p>
+                    <p>Alongside his brother Logan, Art has guided projects across the state with a signature focus on craftsmanship, accountability, and client trust.</p>
+                </div>
+                <div class="core-values">
+                    <div class="value-item"><strong>Value 01</strong> Faith-Driven Leadership</div>
+                    <div class="value-item"><strong>Value 02</strong> Discipline & Accountability</div>
+                    <div class="value-item"><strong>Value 03</strong> Excellence in Execution</div>
+                    <div class="value-item"><strong>Value 04</strong> Building People, Not Just Projects</div>
+                </div>
+            </div>
+            <div class="bio-visual" style="background: var(--secondary); padding: 4rem; color: white;">
+                <h3 style="font-size: 2rem; line-height: 1.2;">"Empowering others to rise above complacency and lead with purpose."</h3>
+                <p style="margin-top: 2rem; opacity: 0.7;">— The Garner Philosophy</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Capabilities</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Commercial</h3>
+                <p>Strategic retail renovations and office build-outs designed for maximum operational efficiency.</p>
+            </div>
+            <div class="card">
+                <h3>Residential</h3>
+                <p>High-end home remodels and roofing solutions executed with signature craftsmanship.</p>
+            </div>
+            <div class="card">
+                <h3>Development</h3>
+                <p>Full ground-up developments managing everything from foundation piers to final finish-outs.</p>
+            </div>
+            <div class="card">
+                <h3>Logistics</h3>
+                <p>Integrated trucking and logistics oversight to ensure material delivery and project timelines are never compromised.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">GO BROTHERS</div>
+                <p style="max-width: 300px; opacity: 0.7;">A Garner Organization company. Dedicated to building the infrastructure of Texas with uncompromising standards.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Direct</h4>
+                <p>3201 W Pipeline Rd<br>Euless, TX 76040</p>
+                <p>(972) 832-2637</p>
+            </div>
+            <div class="footer-links">
+                <h4>Inquiries</h4>
+                <a href="mailto:art@gobroswork.com">art@gobroswork.com</a>
+                <a href="#">Instagram</a>
+                <a href="#">Business Profile</a>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            &copy; 2026 GO Brothers Construction LLC. | Texas Built.
+        </div>
+    </footer>
+
+</body>
+</html>
