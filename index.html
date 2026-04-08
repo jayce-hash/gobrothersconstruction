@@ -23,11 +23,16 @@
             line-height: 1.6;
             color: var(--obsidian);
             background-color: var(--bg-white);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; }
+        h1, h2, h3, h4 { 
+            font-family: 'Orbitron', sans-serif; 
+            text-transform: uppercase; 
+            font-weight: 900; 
+            letter-spacing: -1px; 
+        }
 
         /* --- Navigation --- */
         nav {
@@ -40,11 +45,11 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border);
-            height: 120px; /* Accommodates the larger logo */
+            height: 120px; 
         }
 
         .nav-logo img {
-            height: 180px; /* Massive brand presence */
+            height: 180px; 
             width: auto;
             mix-blend-mode: multiply;
             display: block;
@@ -80,11 +85,12 @@
             height: 3px;
             background: var(--obsidian);
             transition: var(--transition);
+            border-radius: 2px;
         }
 
         /* --- Hero --- */
         header { padding: 10rem 5% 8rem; max-width: 1400px; margin: 0 auto; }
-        .hero-tagline { color: var(--electric-blue); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 1rem; }
+        .hero-tagline { color: var(--electric-blue); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase; }
         header h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
         .hero-subtext { font-size: 1.2rem; max-width: 650px; color: var(--slate); margin-bottom: 3rem; }
         
@@ -105,23 +111,32 @@
         /* --- Story & Capabilities --- */
         .story-section { padding: 8rem 5%; background: var(--bg-light); }
         .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .story-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .story-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: #334155; }
+        
         .leadership-box { background: white; padding: 4rem; border: 1px solid var(--border); box-shadow: 20px 20px 0px var(--obsidian); }
+        .leadership-box p { font-size: 1.1rem; }
 
         .capabilities-section { padding: 8rem 5%; max-width: 1400px; margin: 0 auto; }
         .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
         .cap-card { background: var(--bg-light); padding: 4rem; border: 1px solid var(--border); transition: var(--transition); }
-        .cap-card:hover { border-color: var(--electric-blue); background: white; }
+        .cap-card:hover { border-color: var(--electric-blue); background: white; transform: translateY(-5px); }
+        .cap-card h3 { color: var(--electric-blue); margin-bottom: 1rem; font-size: 1.2rem; }
+        .cap-card p { color: var(--slate); font-size: 1rem; }
         .cap-num { font-family: 'Orbitron'; font-size: 3.5rem; color: #e2e8f0; margin-bottom: 1rem; display: block; }
 
         /* --- Footer --- */
         footer { padding: 8rem 5% 3rem; border-top: 1px solid var(--border); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 5rem; max-width: 1400px; margin: 0 auto; }
         .footer-brand img { width: 90px; height: auto; mix-blend-mode: multiply; margin-bottom: 2rem; }
+        .footer-links h4 { font-size: 0.75rem; letter-spacing: 2px; color: var(--slate); margin-bottom: 1.5rem; }
+        .footer-links a, .footer-links p { color: var(--obsidian); text-decoration: none; display: block; margin-bottom: 0.8rem; font-size: 0.95rem; font-weight: 500; }
+        .footer-links a:hover { color: var(--electric-blue); }
 
         /* --- Responsive / Mobile Menu --- */
         @media (max-width: 900px) {
             nav { height: 90px; padding: 0 5%; }
-            .nav-logo img { height: 110px; } /* Scaled for mobile */
+            .nav-logo img { height: 120px; } 
             
             .hamburger { display: flex; }
             
@@ -129,17 +144,15 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 80%;
+                width: 100%; /* Take full width on mobile for better tap targets */
                 height: 100vh;
-                background: var(--white);
+                background: var(--bg-white);
                 flex-direction: column;
                 justify-content: center;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-                transition: 0.4s ease;
-                background-color: white;
+                transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             }
 
-            .nav-links a { margin: 1.5rem 0; font-size: 1.2rem; }
+            .nav-links a { margin: 1.5rem 0; font-size: 1.5rem; }
 
             /* Hamburger Animation to 'X' */
             #menu-toggle:checked ~ .nav-links { right: 0; }
@@ -147,11 +160,11 @@
             #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-            .story-grid, .cap-grid { grid-template-columns: 1fr; }
-            header { padding-top: 6rem; }
+            .story-grid, .cap-grid { grid-template-columns: 1fr; gap: 3rem; }
+            header { padding-top: 6rem; padding-bottom: 6rem; }
             .leadership-box, .cap-card { padding: 2.5rem; }
-            .footer-grid { text-align: center; }
-            .footer-brand { margin: 0 auto; }
+            .footer-grid { text-align: left; } /* Left aligned looks cleaner on mobile for text */
+            .footer-brand img { margin: 0 0 1.5rem 0; }
         }
     </style>
 </head>
@@ -189,11 +202,11 @@
                 <h2>The Standard</h2>
                 <p>Art and Logan Garner founded GO Brothers to bridge the gap between heavy-duty logistics and precision craftsmanship.</p>
                 <p>By treating every build as a signature testament to accountability, we've redefined what clients expect from a Texas contractor.</p>
-                <h3 style="color: var(--electric-blue); font-size: 1.3rem; margin-top: 2rem;">"Building People, Not Just Projects."</h3>
+                <h3 style="color: var(--electric-blue); font-size: 1.3rem; margin-top: 2rem; letter-spacing: 0;">"Building People, Not Just Projects."</h3>
             </div>
             <div class="leadership-box">
-                <p style="font-style: italic; color: var(--slate); margin-bottom: 2rem; font-size: 1.15rem;">"Our leadership blends precision, integrity, and relentless drive. We guide projects with a focus on craftsmanship."</p>
-                <p><strong>Art Garner</strong><br><small style="color: var(--electric-blue); font-family: 'Orbitron';">CEO & Founder</small></p>
+                <p style="font-style: italic; color: var(--slate); margin-bottom: 2rem;">"Our leadership blends precision, integrity, and relentless drive. We guide projects with a focus on craftsmanship."</p>
+                <p><strong>Art Garner</strong><br><small style="color: var(--electric-blue); font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">CEO & Founder</small></p>
             </div>
         </div>
     </section>
@@ -245,7 +258,7 @@
                 <a href="#">Business Site</a>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 5rem; font-size: 0.75rem; color: #94a3b8;">&copy; 2026 GO Brothers Construction LLC | Garner Organization</p>
+        <p style="text-align: center; margin-top: 5rem; font-size: 0.8rem; color: #94a3b8; font-weight: 500;">&copy; 2026 GO Brothers Construction LLC | Garner Organization</p>
     </footer>
 
 </body>
