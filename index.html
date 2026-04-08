@@ -3,205 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GO Brothers Construction | Built on Integrity, Precision, and Results</title>
+    <title>GO Brothers Construction | Built on Integrity</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-white: #ffffff;
-            --bg-light: #f7f9fc;
-            --slate: #666666; 
+            --bg-light: #f8fafc;
             --electric-blue: #2996FA; 
-            --obsidian: #0a0a0a;
-            --text-main: #1a1a1a;
-            --border: #eef2f6;
-            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --obsidian: #000000;
+            --slate: #64748b;
+            --border: #e2e8f0;
+            --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            line-height: 1.8;
-            color: var(--text-main);
+            line-height: 1.6;
+            color: var(--obsidian);
             background-color: var(--bg-white);
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            color: var(--obsidian);
-            letter-spacing: 1px;
-        }
+        h1, h2, h3 { font-family: 'Orbitron', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; }
 
-        .blended-logo {
-            mix-blend-mode: multiply;
-            display: block;
-        }
-
-        /* --- Expanded Navigation --- */
+        /* --- Navigation --- */
         nav {
             background: rgba(255, 255, 255, 0.98);
-            padding: 2.5rem 8%; /* Increased vertical padding */
+            padding: 1rem 5%; /* Slimmer vertical padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
         }
 
         .nav-logo img {
-            height: 85px; /* Significantly increased from 55px */
+            height: 110px; /* Massive Logo */
             width: auto;
-            object-fit: contain;
+            mix-blend-mode: multiply;
+            display: block;
         }
 
         .nav-links a {
             color: var(--obsidian);
             text-decoration: none;
-            margin-left: 3rem;
+            margin-left: 2rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Hero --- */
+        header {
+            padding: 8rem 5% 6rem;
+            text-align: left;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-tagline { color: var(--electric-blue); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 1rem; }
+        
+        header h1 { 
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Controlled Font Size */
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+        }
+
+        .hero-subtext {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: var(--slate);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--obsidian);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
             font-weight: 800;
+            text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 2px;
             transition: var(--transition);
         }
 
-        .nav-links a:hover { color: var(--electric-blue); }
-
-        /* --- Hero Section --- */
-        header {
-            padding: 15rem 10% 12rem;
-            background: radial-gradient(circle at 70% 30%, #f1f7ff 0%, #ffffff 60%);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .hero-tagline {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            color: var(--electric-blue);
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
-
-        header h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            margin-bottom: 2.5rem;
-            line-height: 0.95;
-            letter-spacing: -3px;
-            font-weight: 900;
-        }
-
-        .hero-subtext {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin-bottom: 5rem;
-            color: var(--slate);
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--obsidian);
-            color: white;
-            padding: 1.6rem 4.5rem;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 3px;
-            transition: var(--transition);
-            border: 2px solid var(--obsidian);
-        }
-
-        .cta-button:hover {
-            background: var(--electric-blue);
-            border-color: var(--electric-blue);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(41, 150, 250, 0.25);
-        }
+        .cta-button:hover { background: var(--electric-blue); transform: translateY(-3px); }
 
         /* --- Story Section --- */
-        .story-section {
-            padding: 12rem 10%;
-            background: var(--bg-light);
-            border-bottom: 1px solid var(--border);
-        }
-
+        .story-section { padding: 6rem 5%; background: var(--bg-light); }
         .story-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 10rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
             align-items: center;
         }
 
-        .story-content h2 { font-size: 2.8rem; margin-bottom: 3rem; position: relative; }
-        .story-content h2::after { content: ''; position: absolute; left: 0; bottom: -12px; width: 100px; height: 6px; background: var(--electric-blue); }
-        .story-content p { margin-bottom: 2.5rem; font-size: 1.25rem; color: #333; font-weight: 400; }
-
-        .story-quote {
-            font-family: 'Orbitron';
-            font-size: 2rem;
-            color: var(--electric-blue);
-            margin-top: 4rem;
-            line-height: 1.3;
-            letter-spacing: 1px;
-        }
+        .story-content h2 { font-size: 2rem; margin-bottom: 2rem; }
+        .story-content p { margin-bottom: 1.5rem; color: #444; font-size: 1.05rem; }
 
         .leadership-box {
             background: white;
-            padding: 6rem;
+            padding: 4rem;
             border: 1px solid var(--border);
-            box-shadow: 30px 30px 0px var(--obsidian);
+            position: relative;
+            box-shadow: 15px 15px 0px var(--obsidian);
         }
 
-        /* --- Capabilities Section --- */
-        .capabilities-section { padding: 12rem 10%; }
-        .section-label { text-align: center; margin-bottom: 8rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2px; background-color: var(--border); }
-        .capability-card { padding: 6rem 4rem; transition: var(--transition); background: white; }
-        .capability-card:hover { background: var(--bg-light); }
-        .capability-card span { font-family: 'Orbitron'; color: #eee; font-size: 4rem; display: block; margin-bottom: 1.5rem; }
-        .capability-card h3 { margin-bottom: 1.5rem; color: var(--obsidian); font-size: 1.2rem; }
+        /* --- Capabilities (The 2x2 Grid) --- */
+        .capabilities-section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+        .capabilities-header { text-align: center; margin-bottom: 4rem; }
+        
+        .cap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Solid 2-column layout */
+            gap: 2rem;
+        }
+
+        .cap-card {
+            background: var(--bg-light);
+            padding: 4rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .cap-card:hover { border-color: var(--electric-blue); background: white; }
+        .cap-card h3 { font-size: 1.2rem; margin-bottom: 1rem; color: var(--electric-blue); }
+        .cap-card p { color: var(--slate); font-size: 0.95rem; }
+        .cap-num { font-family: 'Orbitron'; font-size: 3rem; color: #e2e8f0; margin-bottom: 1rem; display: block; }
 
         /* --- Footer --- */
-        footer {
-            background: var(--bg-light);
-            padding: 12rem 10% 5rem;
-            border-top: 1px solid var(--border);
+        footer { padding: 6rem 5% 2rem; border-top: 1px solid var(--border); }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .footer-grid { display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 8rem; margin-bottom: 8rem; }
-        .footer-brand img { width: 110px; margin-bottom: 2.5rem; }
-        .footer-links h4 { font-size: 0.85rem; margin-bottom: 2.5rem; color: var(--slate); letter-spacing: 2.5px; }
-        .footer-links p, .footer-links a { font-size: 1.1rem; color: #555; text-decoration: none; display: block; margin-bottom: 1.2rem; }
-        .copyright { padding-top: 4rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: #aaa; letter-spacing: 1px; }
+        .footer-logo img { height: 80px; mix-blend-mode: multiply; margin-bottom: 1.5rem; }
+        .footer-links h4 { font-size: 0.7rem; margin-bottom: 1.5rem; color: var(--slate); letter-spacing: 2px; }
+        .footer-links p, .footer-links a { display: block; margin-bottom: 0.8rem; text-decoration: none; color: #444; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--electric-blue); }
 
-        @media (max-width: 1200px) {
-            .story-grid { gap: 5rem; }
-            .nav-logo img { height: 70px; }
-        }
-
-        @media (max-width: 768px) {
-            .story-grid, .footer-grid { grid-template-columns: 1fr; gap: 5rem; }
-            .nav-links { display: none; }
-            header { padding-top: 10rem; }
+        /* --- Mobile Optimization --- */
+        @media (max-width: 850px) {
+            nav { padding: 0.8rem 5%; }
             .nav-logo img { height: 60px; }
+            .nav-links { display: none; }
+            
+            .story-grid, .cap-grid { grid-template-columns: 1fr; }
+            
+            header { padding-top: 4rem; }
+            header h1 { font-size: 2.2rem; }
+            
+            .cap-card, .leadership-box { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo blended-logo">
+        <div class="nav-logo">
             <img src="logo-full.png" alt="Garner Organization">
         </div>
         <div class="nav-links">
-            <a href="#story">The Standard</a>
+            <a href="#story">Story</a>
             <a href="#capabilities">Capabilities</a>
             <a href="#contact">Contact</a>
         </div>
@@ -210,49 +188,48 @@
     <header>
         <div class="hero-tagline">Texas Born. Purpose Built.</div>
         <h1>Built on Integrity,<br>Precision, and Results.</h1>
-        <p class="hero-subtext">Led by Art and Logan Garner, GO Brothers Construction transforms complex commercial visions and residential needs into enduring Texas landmarks.</p>
+        <p class="hero-subtext">Led by Art and Logan Garner, GO Brothers Construction transforms complex commercial visions into enduring Texas landmarks.</p>
         <a href="mailto:art@gobroswork.com" class="cta-button">Partner with Us</a>
     </header>
 
     <section class="story-section" id="story">
         <div class="story-grid">
             <div class="story-content">
-                <h2>The Garner Standard</h2>
+                <h2>The Standard</h2>
                 <p>Art and Logan Garner founded GO Brothers to bridge the gap between heavy-duty logistics and precision craftsmanship.</p>
-                <p>By treating every build as a signature testament to accountability, we've redefined what clients expect from a Texas contractor. No cutting corners. No missed details.</p>
-                <div class="story-quote">"Building People,<br>Not Just Projects."</div>
+                <p>By treating every build as a signature testament to accountability, we've redefined what clients expect from a Texas contractor.</p>
+                <h3 style="color: var(--electric-blue); font-size: 1.2rem; margin-top: 2rem;">"Building People, Not Just Projects."</h3>
             </div>
             <div class="leadership-box">
-                <h3 style="font-size: 1.3rem; margin-bottom: 2.5rem;">Leadership Focus</h3>
-                <p style="color: var(--slate); font-style: italic; margin-bottom: 3rem; font-size: 1.2rem;">"Our leadership blends precision, integrity, and relentless drive. We guide projects with a signature focus on craftsmanship and client trust."</p>
-                <p style="font-size: 1.2rem;"><strong>Art Garner</strong><br><small style="color: var(--electric-blue); font-family: 'Orbitron'; font-size: 0.8rem;">CEO & Founder</small></p>
+                <p style="font-style: italic; color: var(--slate); margin-bottom: 2rem; font-size: 1.1rem;">"Our leadership blends precision, integrity, and relentless drive. We guide projects with a focus on craftsmanship."</p>
+                <p><strong>Art Garner</strong><br><small style="color: var(--electric-blue); font-family: 'Orbitron';">CEO & Founder</small></p>
             </div>
         </div>
     </section>
 
     <section class="capabilities-section" id="capabilities">
-        <div class="section-label">
+        <div class="capabilities-header">
             <div class="hero-tagline">Capabilities</div>
-            <h2>Texas-Grit. Professional Finish.</h2>
+            <h2>Professional Finish</h2>
         </div>
-        <div class="grid">
-            <div class="capability-card">
-                <span>01</span>
+        <div class="cap-grid">
+            <div class="cap-card">
+                <span class="cap-num">01</span>
                 <h3>Pre-Construction</h3>
                 <p>Strategic estimating and budgeting. We find the technical gaps before execution begins.</p>
             </div>
-            <div class="capability-card">
-                <span>02</span>
+            <div class="cap-card">
+                <span class="cap-num">02</span>
                 <h3>Field Execution</h3>
                 <p>Logistics-driven oversight that prioritizes timeline without sacrificing a single inch of quality.</p>
             </div>
-            <div class="capability-card">
-                <span>03</span>
-                <h3>Foundation & Structural</h3>
+            <div class="cap-card">
+                <span class="cap-num">03</span>
+                <h3>Structural</h3>
                 <p>Specialized pier installation and leveling to protect the core bones of your investment.</p>
             </div>
-            <div class="capability-card">
-                <span>04</span>
+            <div class="cap-card">
+                <span class="cap-num">04</span>
                 <h3>High-End Finish</h3>
                 <p>Precision craftsmanship for retail build-outs and custom residential developments.</p>
             </div>
@@ -262,8 +239,8 @@
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="logo-circle.png" alt="GO Icon" class="blended-logo">
-                <p style="font-size: 1rem; max-width: 300px; font-weight: 500; line-height: 1.7;">Building the infrastructure of Texas with uncompromising standards.</p>
+                <img src="logo-circle.png" alt="GO Icon">
+                <p style="font-size: 0.9rem; color: var(--slate);">Building the infrastructure of Texas with uncompromising standards.</p>
             </div>
             <div class="footer-links">
                 <h4>HQ</h4>
@@ -271,15 +248,13 @@
                 <p>(972) 832-2637</p>
             </div>
             <div class="footer-links">
-                <h4>Inquiries</h4>
+                <h4>Contact</h4>
                 <a href="mailto:art@gobroswork.com">art@gobroswork.com</a>
                 <a href="#">Instagram Profile</a>
                 <a href="#">Business Site</a>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 GO Brothers Construction LLC. | Garner Organization
-        </div>
+        <p style="text-align: center; margin-top: 4rem; font-size: 0.7rem; color: #cbd5e1;">&copy; 2026 GO Brothers Construction LLC | Garner Organization</p>
     </footer>
 
 </body>
