@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GO Brothers Construction | Built on Integrity, Precision, and Results</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --obsidian: #000000;
-            --slate: #666666; /* Matching the left side of the 'GO' */
-            --electric-blue: #2996FA; /* Matching the primary blue of the 'GO' */
-            --white: #ffffff;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --slate: #666666; 
+            --electric-blue: #2996FA; 
+            --obsidian: #101820;
+            --text-main: #333333;
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -21,64 +23,44 @@
         }
 
         body {
-            line-height: 1.8;
-            color: var(--white);
-            background-color: var(--obsidian);
-            font-family: 'Inter', -apple-system, sans-serif;
-            overflow-x: hidden;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+            font-family: 'Inter', sans-serif;
         }
 
-        h1, h2, h3, .logo-text {
+        h1, h2, h3 {
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
             font-weight: 900;
             text-transform: uppercase;
+            color: var(--obsidian);
         }
 
         /* --- Navigation --- */
         nav {
-            background: var(--obsidian);
-            padding: 1.2rem 8%;
+            background: var(--bg-white);
+            padding: 1rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--electric-blue);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        /* Using the circular GO logo (Image 4) as the dynamic nav icon */
-        .logo-icon {
-            height: 50px;
-            width: 50px;
-            background-image: url('image_4.png');
-            background-size: cover;
-            background-position: center;
-            border-radius: 50%; /* Ensuring it matches the circular structure */
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
-            color: var(--white);
-        }
-
-        .logo-text span {
-            color: var(--electric-blue);
+        .nav-logo img {
+            height: 50px; /* Adjust based on your logo proportions */
+            display: block;
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--obsidian);
             text-decoration: none;
             margin-left: 2.5rem;
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: var(--transition);
@@ -90,330 +72,216 @@
 
         /* --- Hero Section --- */
         header {
-            min-height: 90vh;
-            background: 
-                radial-gradient(circle at center, rgba(41, 150, 250, 0.15) 0%, transparent 70%),
-                var(--obsidian);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 0 10%;
+            padding: 10rem 10% 8rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f7ff 100%);
+            text-align: left;
+            border-bottom: 1px solid #eee;
         }
 
         .hero-tagline {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            color: var(--slate);
+            letter-spacing: 5px;
+            color: var(--electric-blue);
             margin-bottom: 1rem;
             font-weight: 800;
         }
 
         header h1 {
-            font-size: clamp(2.8rem, 7vw, 5rem);
-            margin-bottom: 2.5rem;
-            line-height: 1.05;
-            color: var(--white);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--obsidian);
         }
 
         .hero-subtext {
             font-size: 1.1rem;
-            max-width: 650px;
-            margin-bottom: 4rem;
-            color: #ddd;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: var(--slate);
         }
 
         .cta-button {
-            background: var(--electric-blue);
+            display: inline-block;
+            background: var(--obsidian);
             color: var(--white);
-            padding: 1.3rem 3rem;
+            padding: 1.2rem 2.8rem;
             text-decoration: none;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
-            border: 2px solid var(--electric-blue);
+            color: white;
             transition: var(--transition);
-        }
-
-        .cta-button.outline {
-            background: transparent;
-            border: 2px solid var(--electric-blue);
-            color: var(--electric-blue);
+            border: 2px solid var(--obsidian);
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(41, 150, 250, 0.4);
+            background: var(--electric-blue);
+            border-color: var(--electric-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(41, 150, 250, 0.2);
         }
 
-        /* --- Brand Philosophy Section --- */
-        .brand-philosophy {
+        /* --- Circular Logo Section (Middle of Site) --- */
+        .brand-break {
+            padding: 6rem 10%;
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+
+        .mid-page-logo {
+            width: 120px;
+            margin-bottom: 2rem;
+        }
+
+        /* --- About / Philosophy --- */
+        .philosophy {
             padding: 8rem 10%;
-            background: 
-                linear-gradient(180deg, var(--obsidian) 0%, #111 50%, var(--obsidian) 100%),
-                var(--obsidian);
-        }
-
-        .bio-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
+            gap: 4rem;
+            align-items: flex-start;
         }
 
-        .philosophy-text h2 {
-            font-size: 2.5rem;
+        .philosophy h2 {
+            font-size: 2rem;
             margin-bottom: 2rem;
-            color: var(--white);
+            border-bottom: 4px solid var(--electric-blue);
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        .bio-text p {
-            margin-bottom: 1.5rem;
-            color: #ccc;
-        }
-
-        /* Value items mirroring the core values section from image_2 */
         .core-values {
             margin-top: 3rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .value-item {
-            border-left: 3px solid var(--slate);
-            padding-left: 1rem;
-            background: #080808;
-            padding: 1rem;
-            transition: var(--transition);
-        }
-
-        .value-item:hover {
-            border-left-color: var(--electric-blue);
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-left: 4px solid var(--slate);
         }
 
         .value-item strong {
             display: block;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            color: var(--slate);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Dynamic visual using a version of the main logo (Image 3) on obsidian */
-        .philosophy-visual {
-            background-color: var(--obsidian);
-            padding: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #1a1a1a;
-        }
-
-        .brand-image {
-            max-width: 90%;
-            height: auto;
-            image-rendering: -webkit-optimize-contrast; /* Keeping the text in the logo crisp */
-        }
-
-        /* --- Capabilities Grid --- */
-        .capabilities {
-            padding: 8rem 10%;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .capability-card {
-            background: #050505;
-            padding: 4rem 2rem;
-            border: 1px solid #111;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .capability-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--electric-blue);
-            transition: var(--transition);
-        }
-
-        .capability-card:hover::after {
-            width: 100%;
-        }
-
-        .capability-card h3 {
-            margin-bottom: 1rem;
             color: var(--electric-blue);
-            font-size: 1.2rem;
-        }
-
-        .capability-card p {
-            color: #aaa;
+            font-size: 0.7rem;
+            margin-bottom: 0.5rem;
         }
 
         /* --- Footer --- */
         footer {
-            background: #000;
-            border-top: 1px solid #1a1a1a;
-            color: #888;
-            padding: 6rem 10% 2rem;
+            background: var(--bg-light);
+            padding: 6rem 10% 3rem;
+            border-top: 1px solid #eee;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 1.5fr 1fr 1fr;
             gap: 4rem;
-            margin-bottom: 4rem;
         }
 
-        /* Utilizing the Garner Organization full brand lockup (Image 3) here */
-        .footer-brand-image {
-            max-height: 80px;
-            image-rendering: -webkit-optimize-contrast;
+        .footer-brand img {
+            width: 80px;
             margin-bottom: 1.5rem;
         }
 
         .footer-links h4 {
-            text-transform: uppercase;
+            font-size: 0.8rem;
             margin-bottom: 1.5rem;
             color: var(--slate);
-            font-size: 0.85rem;
-            letter-spacing: 2px;
         }
 
-        .footer-links a, .footer-links p {
-            color: #666;
+        .footer-links p, .footer-links a {
+            font-size: 0.9rem;
+            color: #555;
             text-decoration: none;
             display: block;
             margin-bottom: 0.8rem;
-            font-size: 0.9rem;
         }
 
-        .footer-links a:hover {
-            color: var(--electric-blue);
-        }
+        .footer-links a:hover { color: var(--electric-blue); }
 
-        .bottom-bar {
+        .copyright {
+            margin-top: 4rem;
             padding-top: 2rem;
+            border-top: 1px solid #ddd;
             text-align: center;
             font-size: 0.8rem;
-            opacity: 0.3;
+            color: #999;
         }
 
-        /* --- Responsive Constraints --- */
-        @media (max-width: 968px) {
-            .bio-container { grid-template-columns: 1fr; gap: 3rem; }
-            .footer-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .philosophy, .footer-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            header h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="brand">
-            <div class="logo-icon"></div>
-            <div class="logo-text">GO <span>Brothers</span></div>
+        <div class="nav-logo">
+            <img src="logo-full.png" alt="Garner Organization">
         </div>
         <div class="nav-links">
-            <a href="#about">The Leadership</a>
-            <a href="#services">Capabilities</a>
+            <a href="#about">Philosophy</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <header>
-        <div class="hero-tagline">Builder. Leader. Visionary.</div>
-        <h1>Built on Integrity, Precision, and Results.</h1>
-        <p class="hero-subtext">GO Brothers Construction, led by Art and Logan Garner, provides elite commercial build-outs, residential renovations, and full ground-up developments across Texas.</p>
-        <div class="cta-group">
-            <a href="mailto:art@gobroswork.com" class="cta-button">Start Project</a>
-            <a href="tel:9728322637" class="cta-button outline">Call Direct</a>
-        </div>
+        <div class="hero-tagline">Excellence in Execution</div>
+        <h1>Built on Integrity,<br>Precision, and Results.</h1>
+        <p class="hero-subtext">GO Brothers Construction provides elite commercial build-outs and residential developments across Texas, led by Art and Logan Garner.</p>
+        <a href="mailto:art@gobroswork.com" class="cta-button">Consult with Art</a>
     </header>
 
-    <section class="brand-philosophy" id="about">
-        <div class="bio-container">
-            <div class="philosophy-text">
-                <h2>The Garner Philosophy</h2>
-                <div class="bio-text">
-                    <p style="font-weight: 700; color: var(--electric-blue);">Art Garner<br>CEO & Founder</p>
-                    <p>Art Garner is a Texas-based entrepreneur whose leadership blends precision with relentless drive. From complex commercial build-outs to structural foundation repairs, Art's expertise spans the entire lifecycle of construction: estimating, budgeting, scheduling, and field execution.</p>
-                    <p>Alongside his brother Logan, Art has guided projects across the state with a signature focus on craftsmanship and client trust.</p>
-                </div>
-                <div class="core-values">
-                    <div class="value-item"><strong>Value 01</strong> Faith-Driven Leadership</div>
-                    <div class="value-item"><strong>Value 02</strong> Discipline & Accountability</div>
-                    <div class="value-item"><strong>Value 03</strong> Excellence in Execution</div>
-                    <div class="value-item"><strong>Value 04</strong> Building People, Not Just Projects</div>
-                </div>
+    <section class="brand-break">
+        <img src="logo-circle.png" alt="GO" class="mid-page-logo">
+        <h2 style="font-size: 1.2rem; color: var(--slate);">Building People, Not Just Projects.</h2>
+    </section>
+
+    <section class="philosophy" id="about">
+        <div class="phi-content">
+            <h2>Our Standards</h2>
+            <p>Art Garner's leadership blends construction precision with relentless drive. From complex ground-up developments to structural foundation repairs, we ensure every project reflects both the client's vision and our uncompromising standards.</p>
+            <div class="core-values">
+                <div class="value-item"><strong>01</strong> Faith-Driven Leadership</div>
+                <div class="value-item"><strong>02</strong> Discipline & Accountability</div>
+                <div class="value-item"><strong>03</strong> Excellence in Execution</div>
+                <div class="value-item"><strong>04</strong> Collective Growth</div>
             </div>
-            <div class="philosophy-visual">
-                <img src="image_3.png" alt="Garner Organization Full Logo" class="brand-image">
-            </div>
+        </div>
+        <div class="phi-box" style="background: var(--obsidian); color: white; padding: 3rem;">
+            <h3 style="color: var(--electric-blue); margin-bottom: 1rem;">Service Areas</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Commercial Build-outs<br>Retail Renovations<br>Residential Roofing<br>Foundation & Piering<br>Logistics Management</p>
         </div>
     </section>
 
-    <section class="capabilities" id="services">
-        <div class="grid">
-            <div class="capability-card">
-                <h3>Commercial Build-Outs</h3>
-                <p>Strategic retail renovations and modern office developments designed for maximum operational efficiency.</p>
-            </div>
-            <div class="capability-card">
-                <h3>Residential Renovations</h3>
-                <p>High-end home remodels and professional roofing solutions executed with signature precision.</p>
-            </div>
-            <div class="capability-card">
-                <h3>Ground-Up Development</h3>
-                <p>Elite full-lifecycle development, managing everything from foundational piers to final finish-out.</p>
-            </div>
-            <div class="capability-card">
-                <h3>Trucking & Logistics</h3>
-                <p>Integrated logistics oversight ensure material delivery and project timelines are never compromised.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
+    <footer>
         <div class="footer-grid">
-            <div>
-                <img src="image_3.png" alt="Garner Organization Brand Mark" class="footer-brand-image">
-                <p style="max-width: 320px; color: #555;">A Garner Organization company. Dedicated to building the infrastructure of Texas with uncompromising standards.</p>
+            <div class="footer-brand">
+                <img src="logo-circle.png" alt="GO Icon">
+                <p style="font-size: 0.85rem; max-width: 250px;">A Garner Organization company. Texas-based, precision-focused.</p>
             </div>
             <div class="footer-links">
-                <h4>Operations</h4>
+                <h4>Contact</h4>
                 <p>3201 W Pipeline Rd<br>Euless, TX 76040</p>
                 <p>(972) 832-2637</p>
             </div>
             <div class="footer-links">
-                <h4>Connections</h4>
+                <h4>Digital</h4>
                 <a href="mailto:art@gobroswork.com">art@gobroswork.com</a>
-                <a href="#">Instagram Profile</a>
-                <a href="#">GMB Profile</a>
+                <a href="#">Instagram</a>
             </div>
         </div>
-        <div class="bottom-bar">
-            &copy; 2026 GO Brothers Construction LLC. | Texas Built.
+        <div class="copyright">
+            &copy; 2026 GO Brothers Construction LLC. | Garner Organization
         </div>
     </footer>
 
