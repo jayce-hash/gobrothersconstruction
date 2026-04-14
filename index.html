@@ -4,262 +4,541 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GO Brothers Construction | Built on Integrity</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-white: #ffffff;
-            --bg-light: #f8fafc;
-            --electric-blue: #2996FA; 
-            --obsidian: #000000;
-            --slate: #64748b;
-            --border: #e2e8f0;
-            --transition: all 0.3s ease;
+            --white:   #ffffff;
+            --paper:   #f9f7f4;
+            --ink:     #0d0d0b;
+            --ink-40:  rgba(13,13,11,0.42);
+            --ink-12:  rgba(13,13,11,0.09);
+            --blue:    #2996FA;
+            --rule:    rgba(13,13,11,0.1);
+            --ease:    cubic-bezier(0.16,1,0.3,1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
 
         body {
-            line-height: 1.6;
-            color: var(--obsidian);
-            background-color: var(--bg-white);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--white);
+            color: var(--ink);
+            font-family: 'Syne', sans-serif;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { 
-            font-family: 'Orbitron', sans-serif; 
-            text-transform: uppercase; 
-            font-weight: 900; 
-            letter-spacing: -1px; 
-        }
-
-        /* --- Navigation --- */
+        /* ── NAV ──────────────────────────────────────── */
         nav {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 0.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            height: 120px; 
+            position: sticky; top:0; z-index:100;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--rule);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 4%;
+            height: 86px;
         }
-
-        .nav-logo img {
-            height: 180px; 
-            width: auto;
-            mix-blend-mode: multiply;
-            display: block;
-            margin-top: 10px;
-        }
-
-        /* --- Desktop Menu --- */
-        .nav-links { display: flex; align-items: center; }
+        .nav-logo img { height: 130px; width:auto; mix-blend-mode:multiply; display:block; }
+        .nav-links { display:flex; align-items:center; }
         .nav-links a {
-            color: var(--obsidian);
-            text-decoration: none;
-            margin-left: 2.5rem;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: var(--transition);
+            font-family:'DM Mono',monospace;
+            font-size:0.67rem; letter-spacing:0.16em; text-transform:uppercase;
+            color:var(--ink-40); text-decoration:none;
+            padding:0.5rem 1.4rem; transition:color 0.25s;
         }
-        .nav-links a:hover { color: var(--electric-blue); }
-
-        /* --- Hamburger Logic (CSS Only) --- */
-        #menu-toggle { display: none; }
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 2000;
+        .nav-links a:hover { color:var(--ink); }
+        .nav-cta {
+            margin-left:0.75rem;
+            background:var(--ink) !important; color:var(--white) !important;
+            padding:0.65rem 1.6rem !important; border-radius:2px;
         }
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 3px;
-            background: var(--obsidian);
-            transition: var(--transition);
-            border-radius: 2px;
+        .nav-cta:hover { background:var(--blue) !important; }
+
+        #menu-toggle { display:none; }
+        .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+        .hamburger span { display:block; width:26px; height:1.5px; background:var(--ink); transition:0.4s var(--ease); }
+
+        /* ── HERO ─────────────────────────────────────── */
+        .hero {
+            min-height: calc(100vh - 86px);
+            display: grid;
+            grid-template-rows: 1fr auto;
+            padding: 0 4% 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content:''; position:absolute;
+            left:4%; top:0; bottom:0; width:1px;
+            background:var(--rule);
+        }
+        .hero-main {
+            display:flex; flex-direction:column; justify-content:center;
+            padding: 5rem 0 4rem 3.5rem;
+        }
+        .hero-eyebrow {
+            font-family:'DM Mono',monospace;
+            font-size:0.64rem; letter-spacing:0.22em; text-transform:uppercase;
+            color:var(--blue); margin-bottom:2.5rem;
+            display:flex; align-items:center; gap:1rem;
+        }
+        .hero-eyebrow::before { content:''; width:2rem; height:1px; background:var(--blue); flex-shrink:0; }
+
+        .hero h1 {
+            font-family:'Cormorant Garamond',serif;
+            font-weight:300;
+            font-size:clamp(4.2rem, 9.5vw, 10rem);
+            line-height:0.93; letter-spacing:-0.02em;
+            margin-bottom:3rem; max-width:950px;
+        }
+        .hero h1 em { font-style:italic; color:var(--blue); }
+
+        .hero-body { display:flex; align-items:flex-end; gap:6rem; }
+        .hero-sub {
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.3rem; line-height:1.7;
+            color:var(--ink-40); max-width:460px; font-weight:300;
+        }
+        .hero-cta-group { display:flex; flex-direction:column; gap:0.75rem; flex-shrink:0; }
+
+        .btn-ink {
+            display:inline-block; text-decoration:none;
+            background:var(--ink); color:var(--white);
+            font-family:'DM Mono',monospace;
+            font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase;
+            padding:1.05rem 2.4rem; border-radius:2px;
+            transition:background 0.3s, transform 0.3s;
+            text-align:center;
+        }
+        .btn-ink:hover { background:var(--blue); transform:translateY(-2px); }
+        .btn-outline {
+            display:inline-block; text-decoration:none;
+            border:1px solid var(--rule); color:var(--ink-40);
+            font-family:'DM Mono',monospace;
+            font-size:0.67rem; letter-spacing:0.18em; text-transform:uppercase;
+            padding:1.05rem 2.4rem; border-radius:2px;
+            transition:border-color 0.3s, color 0.3s;
+            text-align:center;
+        }
+        .btn-outline:hover { border-color:var(--ink); color:var(--ink); }
+
+        .hero-strip {
+            border-top:1px solid var(--rule);
+            display:grid; grid-template-columns:repeat(3,1fr);
+            margin:0 -4%;
+        }
+        .strip-item {
+            padding:1.6rem 4%; border-right:1px solid var(--rule);
+            display:flex; align-items:center; gap:0.9rem;
+        }
+        .strip-item:last-child { border-right:none; }
+        .strip-dot { width:5px; height:5px; border-radius:50%; background:var(--blue); flex-shrink:0; }
+        .strip-label { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-40); }
+
+        /* ── MARQUEE ──────────────────────────────────── */
+        .marquee-wrap { background:var(--ink); overflow:hidden; padding:1.15rem 0; }
+        .marquee-track { display:flex; width:max-content; animation:marquee 30s linear infinite; }
+        .marquee-item {
+            font-family:'Cormorant Garamond',serif; font-style:italic;
+            font-size:1.05rem; letter-spacing:0.04em;
+            color:rgba(255,255,255,0.28); padding:0 2.5rem; white-space:nowrap;
+        }
+        .marquee-item b { color:rgba(255,255,255,0.65); font-weight:400; font-style:normal; }
+        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+        /* ── SHARED ───────────────────────────────────── */
+        .pad { padding:9rem 4%; }
+        .pad-paper { background:var(--paper); }
+        .inner { max-width:1400px; margin:0 auto; }
+
+        .label {
+            font-family:'DM Mono',monospace;
+            font-size:0.61rem; letter-spacing:0.25em; text-transform:uppercase;
+            color:var(--blue); margin-bottom:1.2rem;
+            display:flex; align-items:center; gap:0.75rem;
+        }
+        .label::before { content:''; width:1.5rem; height:1px; background:var(--blue); flex-shrink:0; }
+
+        /* ── ABOUT ────────────────────────────────────── */
+        .about-grid {
+            display:grid; grid-template-columns:1.1fr 0.9fr;
+            gap:7rem; align-items:start;
         }
 
-        /* --- Hero --- */
-        header { padding: 10rem 5% 8rem; max-width: 1400px; margin: 0 auto; }
-        .hero-tagline { color: var(--electric-blue); font-weight: 800; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 1rem; text-transform: uppercase; }
-        header h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
-        .hero-subtext { font-size: 1.2rem; max-width: 650px; color: var(--slate); margin-bottom: 3rem; }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--obsidian);
-            color: white;
-            padding: 1.4rem 3.5rem;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            transition: var(--transition);
+        .about-h2 {
+            font-family:'Cormorant Garamond',serif; font-weight:300;
+            font-size:clamp(2.8rem,4.5vw,5.5rem);
+            line-height:0.97; letter-spacing:-0.02em; margin-bottom:2.5rem;
         }
-        .cta-button:hover { background: var(--electric-blue); transform: translateY(-3px); }
+        .about-h2 em { font-style:italic; color:var(--blue); }
 
-        /* --- Story & Capabilities --- */
-        .story-section { padding: 8rem 5%; background: var(--bg-light); }
-        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1400px; margin: 0 auto; align-items: center; }
-        .story-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; }
-        .story-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: #334155; }
-        
-        .leadership-box { background: white; padding: 4rem; border: 1px solid var(--border); box-shadow: 20px 20px 0px var(--obsidian); }
-        .leadership-box p { font-size: 1.1rem; }
+        .about-body p {
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.18rem; line-height:1.82;
+            color:var(--ink-40); font-weight:300; margin-bottom:1.15rem;
+        }
 
-        .capabilities-section { padding: 8rem 5%; max-width: 1400px; margin: 0 auto; }
-        .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-        .cap-card { background: var(--bg-light); padding: 4rem; border: 1px solid var(--border); transition: var(--transition); }
-        .cap-card:hover { border-color: var(--electric-blue); background: white; transform: translateY(-5px); }
-        .cap-card h3 { color: var(--electric-blue); margin-bottom: 1rem; font-size: 1.2rem; }
-        .cap-card p { color: var(--slate); font-size: 1rem; }
-        .cap-num { font-family: 'Orbitron'; font-size: 3.5rem; color: #e2e8f0; margin-bottom: 1rem; display: block; }
+        .stats-row {
+            display:flex; gap:0; margin-top:3.5rem;
+            border:1px solid var(--rule);
+        }
+        .stat { flex:1; padding:1.75rem 1.75rem 1.5rem; border-right:1px solid var(--rule); }
+        .stat:last-child { border-right:none; }
+        .stat-num {
+            font-family:'Cormorant Garamond',serif; font-weight:300;
+            font-size:3.2rem; line-height:1; letter-spacing:-0.02em;
+        }
+        .stat-num span { color:var(--blue); }
+        .stat-lbl {
+            font-family:'DM Mono',monospace; font-size:0.57rem;
+            letter-spacing:0.18em; text-transform:uppercase; color:var(--ink-40); margin-top:0.4rem;
+        }
 
-        /* --- Footer --- */
-        footer { padding: 8rem 5% 3rem; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 5rem; max-width: 1400px; margin: 0 auto; }
-        .footer-brand img { width: 90px; height: auto; mix-blend-mode: multiply; margin-bottom: 2rem; }
-        .footer-links h4 { font-size: 0.75rem; letter-spacing: 2px; color: var(--slate); margin-bottom: 1.5rem; }
-        .footer-links a, .footer-links p { color: var(--obsidian); text-decoration: none; display: block; margin-bottom: 0.8rem; font-size: 0.95rem; font-weight: 500; }
-        .footer-links a:hover { color: var(--electric-blue); }
+        .quote-card {
+            position:relative; padding:3.5rem;
+            background:var(--white); border:1px solid var(--rule);
+            box-shadow: 7px 7px 0 var(--ink);
+        }
+        .qm {
+            font-family:'Cormorant Garamond',serif; font-size:6.5rem;
+            line-height:0.6; color:var(--blue); opacity:0.18;
+            position:absolute; top:2rem; left:2.5rem; pointer-events:none;
+        }
+        .quote-card blockquote {
+            font-family:'Cormorant Garamond',serif; font-style:italic;
+            font-size:1.3rem; line-height:1.75;
+            color:rgba(13,13,11,0.65); font-weight:300; margin-bottom:2.5rem; position:relative;
+        }
+        .quote-meta strong { font-size:0.88rem; font-weight:700; letter-spacing:0.04em; display:block; }
+        .quote-meta small {
+            font-family:'DM Mono',monospace; font-size:0.58rem;
+            letter-spacing:0.2em; text-transform:uppercase; color:var(--blue);
+        }
 
-        /* --- Responsive / Mobile Menu --- */
-        @media (max-width: 900px) {
-            nav { height: 90px; padding: 0 5%; }
-            .nav-logo img { height: 120px; } 
-            
-            .hamburger { display: flex; }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%; /* Take full width on mobile for better tap targets */
-                height: 100vh;
-                background: var(--bg-white);
-                flex-direction: column;
-                justify-content: center;
-                transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        /* ── SERVICES ─────────────────────────────────── */
+        .svc-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:4rem; gap:2rem; }
+        .svc-h2 {
+            font-family:'Cormorant Garamond',serif; font-weight:300;
+            font-size:clamp(2.8rem,5vw,6rem); line-height:0.95; letter-spacing:-0.02em;
+        }
+        .svc-h2 em { font-style:italic; }
+        .svc-intro {
+            max-width:340px; font-family:'Cormorant Garamond',serif;
+            font-size:1.1rem; line-height:1.7; color:var(--ink-40); font-weight:300;
+        }
+
+        .svc-list { border-top:1px solid var(--rule); }
+        .svc-row {
+            display:grid; grid-template-columns:72px 1fr 1.1fr auto;
+            align-items:center; gap:3rem;
+            padding:2.4rem 0; border-bottom:1px solid var(--rule);
+            position:relative; cursor:default;
+            transition:background 0.3s;
+        }
+        .svc-row:hover { background:var(--white); }
+        .svc-row::after {
+            content:''; position:absolute;
+            bottom:-1px; left:0; width:0; height:1px;
+            background:var(--blue); transition:width 0.5s var(--ease);
+        }
+        .svc-row:hover::after { width:100%; }
+        .svc-n { font-family:'DM Mono',monospace; font-size:0.63rem; letter-spacing:0.18em; color:var(--blue); }
+        .svc-name {
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.5rem,2.2vw,2.2rem); font-weight:300; letter-spacing:-0.01em;
+        }
+        .svc-desc { font-size:0.87rem; line-height:1.72; color:var(--ink-40); }
+        .svc-tags { display:flex; gap:0.45rem; flex-wrap:wrap; justify-content:flex-end; }
+        .tag {
+            font-family:'DM Mono',monospace; font-size:0.57rem;
+            letter-spacing:0.12em; text-transform:uppercase;
+            color:var(--blue); border:1px solid rgba(41,150,250,0.28);
+            padding:0.28rem 0.65rem; border-radius:2px; white-space:nowrap;
+        }
+
+        /* ── PILLARS ──────────────────────────────────── */
+        .pillars-grid {
+            display:grid; grid-template-columns:repeat(4,1fr);
+            border-top:1px solid var(--rule); border-left:1px solid var(--rule);
+        }
+        .pillar {
+            padding:2.75rem 2.25rem; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
+            position:relative; overflow:hidden; transition:background 0.3s;
+        }
+        .pillar:hover { background:var(--paper); }
+        .p-idx { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; color:var(--blue); margin-bottom:2.25rem; }
+        .pillar h3 {
+            font-family:'Cormorant Garamond',serif; font-weight:600;
+            font-size:1.55rem; letter-spacing:-0.01em; margin-bottom:0.9rem;
+        }
+        .pillar p { font-size:0.86rem; line-height:1.75; color:var(--ink-40); }
+        .p-bar { position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--blue); transition:width 0.5s var(--ease); }
+        .pillar:hover .p-bar { width:100%; }
+
+        /* ── CONTACT ──────────────────────────────────── */
+        .contact-grid {
+            display:grid; grid-template-columns:1fr 1fr;
+            gap:8rem; align-items:start;
+        }
+        .contact-h2 {
+            font-family:'Cormorant Garamond',serif; font-weight:300;
+            font-size:clamp(3rem,5vw,6rem); line-height:0.95; letter-spacing:-0.02em; margin-bottom:2rem;
+        }
+        .contact-h2 em { font-style:italic; color:var(--blue); }
+        .contact-desc {
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.18rem; line-height:1.72; color:var(--ink-40); font-weight:300; margin-bottom:3rem;
+        }
+        .email-link { display:inline-block; text-decoration:none; color:var(--ink); }
+        .email-kicker { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--ink-40); margin-bottom:0.35rem; }
+        .email-addr {
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(1.35rem,2.4vw,2.3rem); font-weight:300; letter-spacing:-0.01em;
+            border-bottom:1px solid var(--blue); padding-bottom:0.15rem; display:block;
+            transition:color 0.3s;
+        }
+        .email-link:hover .email-addr { color:var(--blue); }
+
+        .detail-stack { display:flex; flex-direction:column; }
+        .detail-row {
+            display:grid; grid-template-columns:98px 1fr;
+            gap:1rem; padding:1.4rem 0; border-bottom:1px solid var(--rule); align-items:start;
+        }
+        .detail-row:first-child { border-top:1px solid var(--rule); }
+        .d-key { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-40); padding-top:0.12rem; }
+        .d-val { font-family:'Cormorant Garamond',serif; font-size:1.08rem; font-weight:300; line-height:1.5; }
+        .d-val a { color:inherit; text-decoration:none; border-bottom:1px solid var(--rule); transition:color 0.3s, border-color 0.3s; }
+        .d-val a:hover { color:var(--blue); border-color:var(--blue); }
+
+        /* ── FOOTER ───────────────────────────────────── */
+        footer {
+            border-top:1px solid var(--rule);
+            padding:1.75rem 4%;
+            display:flex; align-items:center; justify-content:space-between; gap:2rem;
+        }
+        .ft-logo img { height:66px; mix-blend-mode:multiply; }
+        .ft-copy { font-family:'DM Mono',monospace; font-size:0.56rem; letter-spacing:0.12em; color:var(--ink-40); }
+        .ft-nav { display:flex; gap:1.75rem; }
+        .ft-nav a { font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-40); text-decoration:none; transition:color 0.25s; }
+        .ft-nav a:hover { color:var(--blue); }
+
+        /* ── REVEAL ───────────────────────────────────── */
+        .rv { opacity:0; transform:translateY(22px); transition:opacity 0.85s var(--ease), transform 0.85s var(--ease); }
+        .rv.on { opacity:1; transform:translateY(0); }
+        .d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s} .d4{transition-delay:0.4s}
+
+        /* ── RESPONSIVE ───────────────────────────────── */
+        @media(max-width:960px){
+            .nav-links { display:none; }
+            .hamburger { display:flex; }
+            #menu-toggle:checked ~ .nav-links {
+                display:flex; position:fixed; inset:0;
+                flex-direction:column; justify-content:center; align-items:center;
+                background:var(--white); gap:2rem; z-index:150;
             }
+            #menu-toggle:checked ~ .nav-links a { font-size:1rem; color:var(--ink); }
+            #menu-toggle:checked ~ .hamburger span:nth-child(1){ transform:translateY(6.5px) rotate(45deg); }
+            #menu-toggle:checked ~ .hamburger span:nth-child(2){ opacity:0; }
+            #menu-toggle:checked ~ .hamburger span:nth-child(3){ transform:translateY(-6.5px) rotate(-45deg); }
 
-            .nav-links a { margin: 1.5rem 0; font-size: 1.5rem; }
-
-            /* Hamburger Animation to 'X' */
-            #menu-toggle:checked ~ .nav-links { right: 0; }
-            #menu-toggle:checked ~ .hamburger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-            #menu-toggle:checked ~ .hamburger span:nth-child(2) { opacity: 0; }
-            #menu-toggle:checked ~ .hamburger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-            .story-grid, .cap-grid { grid-template-columns: 1fr; gap: 3rem; }
-            header { padding-top: 6rem; padding-bottom: 6rem; }
-            .leadership-box, .cap-card { padding: 2.5rem; }
-            .footer-grid { text-align: left; } /* Left aligned looks cleaner on mobile for text */
-            .footer-brand img { margin: 0 0 1.5rem 0; }
+            .hero { min-height:auto; }
+            .hero-main { padding:4rem 0 3rem 1.5rem; }
+            .hero h1 { font-size:clamp(3.5rem,10vw,6rem); }
+            .hero-body { flex-direction:column; gap:2.5rem; }
+            .hero-strip { grid-template-columns:1fr; }
+            .strip-item { border-right:none; border-bottom:1px solid var(--rule); }
+            .strip-item:last-child { border-bottom:none; }
+            .about-grid { grid-template-columns:1fr; gap:3.5rem; }
+            .svc-head { flex-direction:column; align-items:flex-start; }
+            .svc-row { grid-template-columns:50px 1fr; gap:1rem; }
+            .svc-desc,.svc-tags { display:none; }
+            .pillars-grid { grid-template-columns:repeat(2,1fr); }
+            .contact-grid { grid-template-columns:1fr; gap:4rem; }
+            footer { flex-direction:column; text-align:center; }
+            .ft-nav { flex-wrap:wrap; justify-content:center; }
+            .stats-row { flex-wrap:wrap; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">
-            <img src="logo-full.png" alt="Garner Organization">
-        </div>
+<!-- NAV -->
+<nav>
+    <div class="nav-logo"><img src="logo-full.png" alt="GO Brothers Construction"></div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </label>
+    <div class="nav-links">
+        <a href="#about" onclick="document.getElementById('menu-toggle').checked=false">About</a>
+        <a href="#services" onclick="document.getElementById('menu-toggle').checked=false">Services</a>
+        <a href="#contact" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
+        <a href="mailto:art@gobroswork.com" class="nav-cta" onclick="document.getElementById('menu-toggle').checked=false">Partner with Us</a>
+    </div>
+</nav>
 
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-
-        <div class="nav-links">
-            <a href="#story" onclick="document.getElementById('menu-toggle').checked = false">About</a>
-            <a href="#capabilities" onclick="document.getElementById('menu-toggle').checked = false">Services</a>
-            <a href="#contact" onclick="document.getElementById('menu-toggle').checked = false">Contact</a>
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-main">
+        <div class="hero-eyebrow">Texas Born &nbsp;·&nbsp; Purpose Built &nbsp;·&nbsp; Dallas–Fort Worth</div>
+        <h1>Built on<br><em>Integrity,</em><br>Precision &amp;<br>Results.</h1>
+        <div class="hero-body">
+            <p class="hero-sub">Led by Art and Logan Garner, GO Brothers Construction transforms complex commercial visions into enduring Texas landmarks — with accountability on every job site.</p>
+            <div class="hero-cta-group">
+                <a href="mailto:art@gobroswork.com" class="btn-ink">Partner With Us</a>
+                <a href="#services" class="btn-outline">View Services</a>
+            </div>
         </div>
+    </div>
+    <div class="hero-strip">
+        <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Pre-Construction &amp; Estimating</span></div>
+        <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Commercial Build-Outs</span></div>
+        <div class="strip-item"><div class="strip-dot"></div><span class="strip-label">Structural &amp; High-End Finish</span></div>
+    </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <div class="marquee-item"><b>GO Brothers Construction</b> — Building People, Not Just Projects</div>
+        <div class="marquee-item">· &nbsp;Euless, TX &nbsp;·&nbsp; DFW Metro &nbsp;·&nbsp; North Texas &nbsp;·</div>
+        <div class="marquee-item"><b>Integrity</b> — Precision — Accountability — Results</div>
+        <div class="marquee-item">· &nbsp;Pre-Construction &nbsp;·&nbsp; Field Execution &nbsp;·&nbsp; Structural &nbsp;·&nbsp; Finish &nbsp;·</div>
+        <div class="marquee-item"><b>GO Brothers Construction</b> — Building People, Not Just Projects</div>
+        <div class="marquee-item">· &nbsp;Euless, TX &nbsp;·&nbsp; DFW Metro &nbsp;·&nbsp; North Texas &nbsp;·</div>
+        <div class="marquee-item"><b>Integrity</b> — Precision — Accountability — Results</div>
+        <div class="marquee-item">· &nbsp;Pre-Construction &nbsp;·&nbsp; Field Execution &nbsp;·&nbsp; Structural &nbsp;·&nbsp; Finish &nbsp;·</div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="pad" id="about">
+    <div class="inner">
+        <div class="about-grid">
+            <div>
+                <div class="label rv">Our Story</div>
+                <h2 class="about-h2 rv d1">The<br><em>Garner</em><br>Standard</h2>
+                <div class="about-body rv d2">
+                    <p>Art and Logan Garner built GO Brothers to bridge the gap between heavy-duty logistics and true precision craftsmanship — the space where most Texas contractors fall short.</p>
+                    <p>From complex commercial projects across the DFW metroplex to foundational structural work that protects investments for decades, every project is a testament to accountability.</p>
+                    <p>We treat every build as if our name is on it permanently. Because it is.</p>
+                </div>
+                <div class="stats-row rv d3">
+                    <div class="stat"><div class="stat-num">DFW<span>+</span></div><div class="stat-lbl">Service Area</div></div>
+                    <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-lbl">Accountability</div></div>
+                    <div class="stat"><div class="stat-num">4<span>+</span></div><div class="stat-lbl">Core Services</div></div>
+                </div>
+            </div>
+            <div class="quote-card rv d2">
+                <div class="qm">"</div>
+                <blockquote>"Our leadership blends precision, integrity, and relentless drive. We guide every project with a focus on craftsmanship — and a commitment to the people behind it."</blockquote>
+                <div class="quote-meta">
+                    <strong>Art Garner</strong>
+                    <small>CEO &amp; Founder — GO Brothers Construction</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad pad-paper" id="services">
+    <div class="inner">
+        <div class="svc-head">
+            <div>
+                <div class="label rv">What We Build</div>
+                <h2 class="svc-h2 rv d1">Professional<br><em>Finish.</em></h2>
+            </div>
+            <p class="svc-intro rv d2">Four core capabilities, executed with the discipline and precision that defines every GO Brothers job site.</p>
+        </div>
+        <div class="svc-list">
+            <div class="svc-row rv">
+                <span class="svc-n">01</span>
+                <span class="svc-name">Pre-Construction</span>
+                <span class="svc-desc">Strategic estimating and budget analysis. We identify technical gaps before execution begins — protecting your timeline and your investment.</span>
+                <div class="svc-tags"><span class="tag">Estimating</span><span class="tag">Budgeting</span></div>
+            </div>
+            <div class="svc-row rv d1">
+                <span class="svc-n">02</span>
+                <span class="svc-name">Field Execution</span>
+                <span class="svc-desc">Logistics-driven site oversight prioritizing timeline without sacrificing quality. Our field teams operate with precision at every phase.</span>
+                <div class="svc-tags"><span class="tag">Oversight</span><span class="tag">Scheduling</span></div>
+            </div>
+            <div class="svc-row rv d2">
+                <span class="svc-n">03</span>
+                <span class="svc-name">Structural</span>
+                <span class="svc-desc">Specialized pier installation and structural leveling to protect the bones of your investment — built to last decades, not seasons.</span>
+                <div class="svc-tags"><span class="tag">Pier Install</span><span class="tag">Leveling</span></div>
+            </div>
+            <div class="svc-row rv d3">
+                <span class="svc-n">04</span>
+                <span class="svc-name">High-End Finish</span>
+                <span class="svc-desc">Precision craftsmanship for retail build-outs and custom residential. The final 10% is what clients remember — we take it seriously.</span>
+                <div class="svc-tags"><span class="tag">Retail</span><span class="tag">Residential</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pad">
+    <div class="inner">
+        <div style="margin-bottom:4rem">
+            <div class="label rv">Our Foundation</div>
+            <h2 class="rv d1" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,4vw,4.5rem);line-height:1;letter-spacing:-0.02em">Building People,<br><em style="font-style:italic;color:var(--blue)">Not Just Projects.</em></h2>
+        </div>
+        <div class="pillars-grid">
+            <div class="pillar rv"><div class="p-idx">01</div><h3>Integrity</h3><p>We say what we mean and do what we say — on every bid, every build, every client interaction.</p><div class="p-bar"></div></div>
+            <div class="pillar rv d1"><div class="p-idx">02</div><h3>Precision</h3><p>Detail-obsessed craftsmanship visible in every corner, joint, and finish surface. The standard never slips.</p><div class="p-bar"></div></div>
+            <div class="pillar rv d2"><div class="p-idx">03</div><h3>Accountability</h3><p>We own outcomes — the wins and the challenges. Our clients never wonder where the buck stops.</p><div class="p-bar"></div></div>
+            <div class="pillar rv d3"><div class="p-idx">04</div><h3>Results</h3><p>On time, on budget, on quality. Three promises kept on every project — the GO Brothers commitment.</p><div class="p-bar"></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="pad pad-paper" id="contact">
+    <div class="inner">
+        <div class="contact-grid">
+            <div>
+                <div class="label rv">Let's Build</div>
+                <h2 class="contact-h2 rv d1">Ready to<br>Start<br><em>Something?</em></h2>
+                <p class="contact-desc rv d2">Whether you're in the planning stage or ready to break ground, reach out directly — Art responds personally.</p>
+                <a href="mailto:art@gobroswork.com" class="email-link rv d3">
+                    <div class="email-kicker">Direct Email</div>
+                    <span class="email-addr">art@gobroswork.com</span>
+                </a>
+            </div>
+            <div class="detail-stack rv d2">
+                <div class="detail-row"><span class="d-key">HQ</span><span class="d-val">3201 W Pipeline Rd<br>Euless, TX 76040</span></div>
+                <div class="detail-row"><span class="d-key">Phone</span><span class="d-val"><a href="tel:9728322637">(972) 832-2637</a></span></div>
+                <div class="detail-row"><span class="d-key">Email</span><span class="d-val"><a href="mailto:art@gobroswork.com">art@gobroswork.com</a></span></div>
+                <div class="detail-row"><span class="d-key">Territory</span><span class="d-val">Dallas–Fort Worth Metroplex &amp; North Texas</span></div>
+                <div class="detail-row"><span class="d-key">Entity</span><span class="d-val">GO Brothers Construction LLC<br>Garner Organization</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="ft-logo"><img src="logo-circle.png" alt="GO Brothers"></div>
+    <p class="ft-copy">&copy; 2026 GO Brothers Construction LLC — Garner Organization. All rights reserved.</p>
+    <nav class="ft-nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:art@gobroswork.com">Email</a>
     </nav>
+</footer>
 
-    <header>
-        <div class="hero-tagline">Texas Born. Purpose Built.</div>
-        <h1>Built on Integrity,<br>Precision, and Results.</h1>
-        <p class="hero-subtext">Led by Art and Logan Garner, GO Brothers Construction transforms complex commercial visions into enduring Texas landmarks.</p>
-        <a href="mailto:art@gobroswork.com" class="cta-button">Partner with Us</a>
-    </header>
-
-    <section class="story-section" id="story">
-        <div class="story-grid">
-            <div class="story-content">
-                <h2>The Standard</h2>
-                <p>Art and Logan Garner founded GO Brothers to bridge the gap between heavy-duty logistics and precision craftsmanship.</p>
-                <p>By treating every build as a signature testament to accountability, we've redefined what clients expect from a Texas contractor.</p>
-                <h3 style="color: var(--electric-blue); font-size: 1.3rem; margin-top: 2rem; letter-spacing: 0;">"Building People, Not Just Projects."</h3>
-            </div>
-            <div class="leadership-box">
-                <p style="font-style: italic; color: var(--slate); margin-bottom: 2rem;">"Our leadership blends precision, integrity, and relentless drive. We guide projects with a focus on craftsmanship."</p>
-                <p><strong>Art Garner</strong><br><small style="color: var(--electric-blue); font-family: 'Orbitron', sans-serif; letter-spacing: 1px;">CEO & Founder</small></p>
-            </div>
-        </div>
-    </section>
-
-    <section class="capabilities-section" id="capabilities">
-        <div style="text-align: center; margin-bottom: 5rem;">
-            <div class="hero-tagline">Services</div>
-            <h2>Professional Finish</h2>
-        </div>
-        <div class="cap-grid">
-            <div class="cap-card">
-                <span class="cap-num">01</span>
-                <h3>Pre-Construction</h3>
-                <p>Strategic estimating and budgeting. We find the technical gaps before execution begins.</p>
-            </div>
-            <div class="cap-card">
-                <span class="cap-num">02</span>
-                <h3>Field Execution</h3>
-                <p>Logistics-driven oversight that prioritizes timeline without sacrificing quality.</p>
-            </div>
-            <div class="cap-card">
-                <span class="cap-num">03</span>
-                <h3>Structural</h3>
-                <p>Specialized pier installation and leveling to protect the bones of your investment.</p>
-            </div>
-            <div class="cap-card">
-                <span class="cap-num">04</span>
-                <h3>High-End Finish</h3>
-                <p>Precision craftsmanship for retail build-outs and custom residential developments.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <img src="logo-circle.png" alt="GO Icon">
-                <p style="font-size: 0.95rem; color: var(--slate);">Building the infrastructure of Texas with uncompromising standards.</p>
-            </div>
-            <div class="footer-links">
-                <h4>HQ</h4>
-                <p>3201 W Pipeline Rd<br>Euless, TX 76040</p>
-                <p>(972) 832-2637</p>
-            </div>
-            <div class="footer-links">
-                <h4>Contact</h4>
-                <a href="mailto:art@gobroswork.com">art@gobroswork.com</a>
-                <a href="#">Instagram Profile</a>
-                <a href="#">Business Site</a>
-            </div>
-        </div>
-        <p style="text-align: center; margin-top: 5rem; font-size: 0.8rem; color: #94a3b8; font-weight: 500;">&copy; 2026 GO Brothers Construction LLC | Garner Organization</p>
-    </footer>
-
+<script>
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold:0.07, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
