@@ -1,0 +1,26 @@
+# GO Brothers Construction — Netlify settings
+# No build step: the site is served by functions in netlify/functions,
+# static files live in /public, and the owner's edits are stored in Netlify Blobs.
+
+[build]
+  publish = "public"
+  command = ""
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
